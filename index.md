@@ -1,35 +1,27 @@
 ---
-title: Home
 layout: home
 ---
 
-This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
+<div class="small-text">
+NASTAVNI MATERIJAL UZ VJEŽBE NAMIJENJEN STUDENTIMA KOLEGIJA <strong>PROGRAMIRANJE</strong> NA GEODETSKOM FAKULTETU SVEUČILIŠTA U ZAGREBU. </div>
+<img src="{{ 'assets\images\0_Logo fakulteta.png' | relative_url }}" style="display: block; margin-left: 0 auto; max-width: 20%;">
+# Programiranje
+<p align="justify">Programiranje je temeljni način na koji suvremeni svijet oblikuje, automatizira i razumije složene sustave. U ovom dokumentu programiranje se razmatra kroz objektno orijentirani pristup, pri čemu se naglasak stavlja na modeliranje problema pomoću klasa, objekata i njihovih međusobnih odnosa. Takav pristup omogućuje jasnije razmišljanje o strukturi programa, njegovoj održivosti i mogućnosti daljnjeg razvoja.
 
-If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^1] And you will be able to deploy your local build to a different platform than GitHub Pages.
+<p align="justify">Java je jedan od Objektno orijentiranih programskih jezika koji na jasan i eksplicitan način podržava objektno orijentirano programiranje, uz istodobnu primjenu u stvarnim, industrijskim okruženjima. Kao jezik koji se temelji na Java virtualnom stroju (JVM), Java omogućuje prenosivost, stabilnost i dugoročnu održivost programskih rješenja, što je čini prikladnom i za učenje temeljnih koncepata i za razvoj aplikacija.
 
-More specifically, the created site:
+<p align="justify">Cilj ovog materijala nije samo upoznavanje sa sintaksom jezika Java, već razumijevanje načina razmišljanja programera. Programiranje se ovdje promatra kao proces analize problema, apstrakcije, dizajniranja rješenja i kritičkog vrednovanja vlastitog koda.
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
+<p align="justify">Dokument je strukturiran tako da postupno uvodi koncepte, a oblikovan da potakne aktivan pristup učenju: čitanje, isprobavanje koda i promišljanje ponuđenih rješenja.
 
-Other than that, you're free to customize sites that you create with this template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
+<p>Preporučena literatura za bolje razumijevanje sadržaja vježbi:</p>
 
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
+1. Kljajić, I., Programiranje, ppt-predavanja<br>
+2. Schildt, H., <a href="https://www.sietk.org/downloads/javabook.pdf">Java The Complete Reference </a>, 9th edition, Oracle, 2014<br>
+3. Materijali objavljeni na e-kolegiju<br>
+4. Web izvori: npr. <a href="https://www.w3schools.com/java/default.asp">W3School</a>
+<br>
+<br>
+<div class="small-text">
+Priredio: dr. sc. tech. Karlo Kević, 2026. Dopunjeno i izmijenjeno prema materijalima prof. dr. sc. Nade Vučetić, ak. god. 2018./2019. </div>
 
-To get started with creating a site, simply:
-
-1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
-
-If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md#hosting-your-docs-from-an-existing-project-repo) in the template README.
-
-----
-
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
-[Jekyll]: https://jekyllrb.com
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
