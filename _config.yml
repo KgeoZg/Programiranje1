@@ -6,3 +6,11 @@ url: https://just-the-docs.github.io
 
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
+
+  plugins:
+  - jekyll-sass-converter
+
+url: https://KgeoZg.github.io/Programiranje
+
+just_the_docs:
+    - /assets/css/just-the-docs.scss
