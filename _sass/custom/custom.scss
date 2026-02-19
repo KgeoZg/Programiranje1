@@ -1,1 +1,343 @@
+/* --- Hotspot Styles --- */
 
+.hotspot-wrapper {
+  width: 100%;             // Takes up the full width of your page
+  display: flex;           // Allows for easy centering
+  justify-content: center; // Centers the image horizontally
+  padding: 40px 0;         // Adds space above and below
+  background: transparent; // You can change this to test the area
+}
+
+// The container for your image and dots
+.hotspot-container {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  line-height: 0; // Removes ghost space under image
+}
+
+.hotspot-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+// The interactive dot
+.hotspot {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+
+  // The Pulsing Dot
+  .hotspot--inner {
+    width: 20px;
+    height: 20px;
+    background: #377af5; // Change this to match your theme
+    border-radius: 50%;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: inherit;
+      animation: pulse 2s infinite;
+    }
+  }
+
+  // The Tooltip (Hidden by default)
+  .hotspot--content {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 400px;
+    padding: 15px;
+    background: #ffffff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+    z-index: 20;
+
+    h4 { margin: 0 0 5px 0; color: #377af5; }
+    p { margin: 0; font-size: 0.9em; }
+  }
+
+  // Show tooltip on hover
+  &:hover {
+    .hotspot--content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}
+
+// Pulse Animation
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* --- Two Column Layout --- */
+
+.custom-row {
+  display: flex;
+  gap: 20px;           // Space between the columns
+  margin: 20px 0;
+  flex-wrap: wrap;     // Allows stacking on mobile
+}
+
+.custom-column {
+  flex: 1;             // Makes both columns equal width
+  min-width: 250px;    // If the screen is smaller than 250px, they stack
+}
+
+/* --- Clean Accordion: Grey Toggle, No Blue --- */
+
+details {
+  border: none;
+  background: transparent;
+  margin-bottom: 20px;
+}
+
+summary {
+  /* Default State (Closed) */
+  background-color: #f6f8fa;     /* Very light grey */
+  border: 1px solid #d1d5da;     /* Subtle grey border */
+  border-radius: 6px;
+  padding: 16px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  
+  /* REMOVE BLUE BOUNDARY */
+  outline: none;                 /* Removes the blue focus ring */
+  -webkit-tap-highlight-color: transparent; /* Removes blue flash on mobile */
+  
+  display: flex;
+  align-items: center;
+  list-style: none;
+  transition: background-color 0.2s ease;
+}
+
+/* Remove default triangle */
+summary::-webkit-details-marker { display: none; }
+
+/* Arrow Icon (Neutral color) */
+summary::before {
+  content: '→';
+  margin-right: 12px;
+  color: #586069;                /* Dark grey arrow instead of blue */
+  transition: transform 0.2s ease;
+}
+
+/* OPEN STATE: When the user clicks */
+details[open] summary {
+  background-color: #e1e4e8;     /* Darker light grey when clicked/open */
+  border-color: #d1d5da;         /* Keeps the border grey, not blue */
+  color: #24292e;                /* Dark text */
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);      /* Arrow points down */
+}
+
+/* Hover effect */
+summary:hover {
+  background-color: #ebedef;
+}
+
+/* CONTENT AREA */
+.details-content {
+  border: none;                  /* No border for content */
+  padding: 25px 50px !important; /* Significant padding for "bigger" feel */
+  line-height: 1.8;
+  background: transparent;
+}
+
+/* Small font size*/
+.small-text {
+    font-size: 11px !important;
+    color: #666;
+    line-height: 1.4;
+    display: block;
+    margin-top: 5px;
+}
+
+/* --- Toggleable Button-Accordion (Purple Fill) --- */
+
+.btn-acc-group {
+  margin: 20px 0;
+}
+
+/* Hide the checkboxes */
+input.acc-state {
+  display: none !important;
+}
+
+.acc-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* The Content Panes */
+.acc-panel {
+  display: none !important;
+  padding: 30px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-top: 10px;
+}
+
+/* --- THE LOGIC --- */
+
+/* --- UNIVERSAL LOGIC FOR MULTIPLE GROUPS --- */
+
+/* 1. Show the matching pane when checked */
+#acc-1:checked ~ #pane-1,
+#acc-2:checked ~ #pane-2,
+#acc-3:checked ~ #pane-3,
+#acc-4:checked ~ #pane-4,
+#acc-5:checked ~ #pane-5,
+#acc-6:checked ~ #pane-6,
+#acc-7:checked ~ #pane-7,
+#acc-8:checked ~ #pane-8,
+#acc-9:checked ~ #pane-9,
+#acc-10:checked ~ #pane-10,
+#acc-11:checked ~ #pane-11,
+#acc-12:checked ~ #pane-12,
+#acc-13:checked ~ #pane-13,
+#acc-14:checked ~ #pane-14,
+#acc-15:checked ~ #pane-15,
+#acc-16:checked ~ #pane-16,
+#acc-17:checked ~ #pane-17,
+#acc-18:checked ~ #pane-18,
+#acc-19:checked ~ #pane-19,
+#acc-20:checked ~ #pane-20,
+#acc-21:checked ~ #pane-21,
+#acc-22:checked ~ #pane-22,
+#acc-23:checked ~ #pane-23,
+#acc-24:checked ~ #pane-24,
+#acc-25:checked ~ #pane-25,
+#acc-26:checked ~ #pane-26,
+#acc-27:checked ~ #pane-27,
+#acc-28:checked ~ #pane-28,
+#acc-29:checked ~ #pane-29,
+#acc-30:checked ~ #pane-30,
+#acc-31:checked ~ #pane-31,
+#acc-32:checked ~ #pane-32,
+#acc-33:checked ~ #pane-33,
+#acc-34:checked ~ #pane-34,
+#acc-35:checked ~ #pane-35,
+#acc-36:checked ~ #pane-36,
+#acc-37:checked ~ #pane-37,
+#acc-38:checked ~ #pane-38,
+#acc-39:checked ~ #pane-39,
+#acc-40:checked ~ #pane-40 {
+  display: block !important;
+  border-top: 3px solid #6f42c1 !important;
+}
+
+/* 2. Change the matching button to Purple Fill when checked */
+#acc-1:checked ~ .acc-btn-row label[for="acc-1"],
+#acc-2:checked ~ .acc-btn-row label[for="acc-2"],
+#acc-3:checked ~ .acc-btn-row label[for="acc-3"],
+#acc-4:checked ~ .acc-btn-row label[for="acc-4"],
+#acc-5:checked ~ .acc-btn-row label[for="acc-5"],
+#acc-6:checked ~ .acc-btn-row label[for="acc-6"],
+#acc-7:checked ~ .acc-btn-row label[for="acc-7"],
+#acc-8:checked ~ .acc-btn-row label[for="acc-8"],
+#acc-9:checked ~ .acc-btn-row label[for="acc-9"],
+#acc-10:checked ~ .acc-btn-row label[for="acc-10"],
+#acc-11:checked ~ .acc-btn-row label[for="acc-11"],
+#acc-12:checked ~ .acc-btn-row label[for="acc-12"],
+#acc-13:checked ~ .acc-btn-row label[for="acc-13"],
+#acc-14:checked ~ .acc-btn-row label[for="acc-14"],
+#acc-15:checked ~ .acc-btn-row label[for="acc-15"],
+#acc-16:checked ~ .acc-btn-row label[for="acc-16"],
+#acc-17:checked ~ .acc-btn-row label[for="acc-17"],
+#acc-18:checked ~ .acc-btn-row label[for="acc-18"],
+#acc-19:checked ~ .acc-btn-row label[for="acc-19"],
+#acc-20:checked ~ .acc-btn-row label[for="acc-20"],
+#acc-21:checked ~ .acc-btn-row label[for="acc-21"],
+#acc-22:checked ~ .acc-btn-row label[for="acc-22"],
+#acc-23:checked ~ .acc-btn-row label[for="acc-23"],
+#acc-24:checked ~ .acc-btn-row label[for="acc-24"],
+#acc-25:checked ~ .acc-btn-row label[for="acc-25"],
+#acc-26:checked ~ .acc-btn-row label[for="acc-26"],
+#acc-27:checked ~ .acc-btn-row label[for="acc-27"],
+#acc-28:checked ~ .acc-btn-row label[for="acc-28"],
+#acc-29:checked ~ .acc-btn-row label[for="acc-29"],
+#acc-30:checked ~ .acc-btn-row label[for="acc-30"],
+#acc-31:checked ~ .acc-btn-row label[for="acc-31"],
+#acc-32:checked ~ .acc-btn-row label[for="acc-32"],
+#acc-33:checked ~ .acc-btn-row label[for="acc-33"],
+#acc-34:checked ~ .acc-btn-row label[for="acc-34"],
+#acc-35:checked ~ .acc-btn-row label[for="acc-35"],
+#acc-36:checked ~ .acc-btn-row label[for="acc-36"],
+#acc-37:checked ~ .acc-btn-row label[for="acc-37"],
+#acc-38:checked ~ .acc-btn-row label[for="acc-38"],
+#acc-39:checked ~ .acc-btn-row label[for="acc-39"],
+#acc-40:checked ~ .acc-btn-row label[for="acc-40"] {
+  background-color: #6f42c1 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border-color: #5a32a3 !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(1px);
+}
+
+/* 3. Smooth transition */
+.acc-btn-row label.btn {
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+/* TABLICAA */
+/* --- Spacious Table (No Slider, No Double Line) --- */
+
+.custom-grid-table {
+  width: 100%;
+  /* Fixed layout ensures the table never exceeds the 100% width */
+  table-layout: fixed; 
+  border-collapse: collapse;
+  margin: 0 0;
+  /* Restored closer to previous font size */
+  font-size: 0.9rem; 
+}
+
+.custom-grid-table th, 
+.custom-grid-table td {
+  border: 1px solid #e1e4e8;
+  /* 12px top/bottom (spacious feel), 4px left/right (saves horizontal space) */
+  padding: 12px 4px; 
+  text-align: center;
+  /* Forces long words to wrap to a new line to prevent a slider */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.custom-grid-table th {
+  background-color: #f6f8fa;
+  font-weight: 600;
+}
+
+/* Stil za ljubičaste ćelije */
+.custom-grid-table tbody tr td:nth-child(n+4) {
+  color: #6f42c1 !important;
+  font-weight: bold !important;
+}
+
+.custom-grid-table tr:nth-child(even) {
+  background-color: #fafbfc;
+}
